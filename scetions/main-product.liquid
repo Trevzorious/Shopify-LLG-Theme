@@ -1,0 +1,25 @@
+<main class="main-content">
+  <div class="product-detail">
+    <h1>{{ product.title }}</h1>
+    {% if product.featured_image %}
+      <img src="{{ product.featured_image | img_url: '600x' }}" alt="{{ product.title }}">
+    {% endif %}
+    <div class="product-price">{{ product.price | money }}</div>
+    <form action="/cart/add" method="post">
+      <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+      <button class="add-to-cart-btn"{% unless product.available %} disabled{% endunless %}>
+        {% if product.available %}Add to Cart{% else %}Sold Out{% endif %}
+      </button>
+    </form>
+    <div class="product-description">
+      {{ product.description }}
+    </div>
+    <div class="product-actions">
+      <a href="/wishlist?add={{ product.id }}">Add to Wishlist</a>
+      <a href="/account">Back to Account</a>
+      {% if request.referer contains 'search' or request.query_string contains 'search' %}
+        <a href="{{ request.referer | default: '/search' }}">Back to Search Results</a>
+      {% endif %}
+    </div>
+  </div>
+</main>
