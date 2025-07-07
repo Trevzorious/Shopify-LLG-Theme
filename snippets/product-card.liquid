@@ -1,0 +1,32 @@
+<div class="product-card">
+  <a href="{{ product.url }}">
+    <div class="product-image">
+      {% if product.featured_image %}
+        <img src="{{ product.featured_image | img_url: '400x' }}" alt="{{ product.title }}">
+      {% else %}
+        <span style="font-size:3rem;">🌌</span>
+      {% endif %}
+      {% if product.available %}
+        <div class="product-badge">Available</div>
+      {% else %}
+        <div class="product-badge">Coming Soon</div>
+      {% endif %}
+    </div>
+    <div class="product-info">
+      <div class="product-category">
+        {% if product.type != blank %}
+          {{ product.type }}
+        {% endif %}
+      </div>
+      <h3 class="product-title">{{ product.title }}</h3>
+      <p class="product-description">{{ product.description | strip_html | truncate: 90 }}</p>
+      <div class="product-price">{{ product.price | money }}</div>
+    </div>
+  </a>
+  <form action="/cart/add" method="post">
+    <input type="hidden" name="id" value="{{ product.variants.first.id }}">
+    <button class="add-to-cart-btn"{% unless product.available %} disabled{% endunless %}>
+      {% if product.available %}Add to Cart{% else %}Coming Soon{% endif %}
+    </button>
+  </form>
+</div>
