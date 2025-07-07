@@ -1,10 +1,14 @@
 <main class="main-content">
   <h1>Create Account</h1>
   <form method="post" action="/account">
-    <input type="text" name="customer[first_name]" placeholder="First Name" required>
-    <input type="text" name="customer[last_name]" placeholder="Last Name" required>
-    <input type="email" name="customer[email]" placeholder="Email" required>
-    <input type="password" name="customer[password]" placeholder="Password" required>
+    <label for="register_first_name">First Name</label>
+    <input type="text" id="register_first_name" name="customer[first_name]" required>
+    <label for="register_last_name">Last Name</label>
+    <input type="text" id="register_last_name" name="customer[last_name]" required>
+    <label for="register_email">Email</label>
+    <input type="email" id="register_email" name="customer[email]" required>
+    <label for="register_password">Password</label>
+    <input type="password" id="register_password" name="customer[password]" required>
     <button type="submit">Sign Up</button>
     {% if shop.captcha_enabled %}
       <p>CAPTCHA protection is enabled for your security.</p>
