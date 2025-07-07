@@ -1,0 +1,13 @@
+<main class="main-content">
+  <h1>Sign In</h1>
+  <form method="post" action="/account/login">
+    <input type="email" name="customer[email]" placeholder="Email" required>
+    <input type="password" name="customer[password]" placeholder="Password" required>
+    <button type="submit">Sign In</button>
+    {% if shop.captcha_enabled %}
+      <p>CAPTCHA protection is enabled for your security.</p>
+    {% endif %}
+  </form>
+  <a href="/account/register">Create account</a> | 
+  <a href="/account/reset">Forgot password?</a>
+</main>
