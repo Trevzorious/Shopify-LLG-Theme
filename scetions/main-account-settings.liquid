@@ -1,0 +1,12 @@
+<main class="main-content">
+  <h1>Addresses & Account Settings</h1>
+  {{ customer.addresses }}
+  <form method="post" action="/account">
+    <label>Change Password</label>
+    <input type="password" name="customer[password]" placeholder="New Password">
+    <button type="submit">Update Password</button>
+  </form>
+  <form method="post" action="/account/delete" onsubmit="return confirm('Are you sure you want to delete your account?');">
+    <button type="submit" style="color:red;">Delete My Account</button>
+  </form>
+</main>
