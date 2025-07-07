@@ -8,9 +8,35 @@
         <li><a href="/wishlist">Wishlist</a></li>
         <li><a href="/cart">Cart</a></li>
         {% if customer %}
-          <li><a href="/account">Account</a></li>
+          <li class="header-account-menu">
+            <a href="/account" class="account-link">Account ▼</a>
+            <ul class="account-dropdown">
+              <li><a href="/account">Account Overview</a></li>
+              <li><a href="/account/addresses">Addresses</a></li>
+              <li><a href="/wishlist">Wishlist</a></li>
+              <li><a href="/account/logout">Logout</a></li>
+            </ul>
+          </li>
         {% else %}
-          <li><a href="/account/login">Sign In</a></li>
+          <li class="header-login-menu">
+            <a href="#" class="login-link" id="show-login-dropdown">Sign In ▼</a>
+            <div class="login-dropdown" id="login-dropdown">
+              <form method="post" action="/account/login" autocomplete="on">
+                <label for="header-login-email">Email</label>
+                <input type="email" id="header-login-email" name="customer[email]" required>
+                <label for="header-login-password">Password</label>
+                <input type="password" id="header-login-password" name="customer[password]" required>
+                <button type="submit">Sign In</button>
+                {% if shop.captcha_enabled %}
+                  <p>CAPTCHA protection is enabled for your security.</p>
+                {% endif %}
+                <div class="login-actions">
+                  <a href="/account/register">Register for Account</a>
+                  <a href="/account/reset">Forgot Password?</a>
+                </div>
+              </form>
+            </div>
+          </li>
         {% endif %}
       </ul>
     </nav>
@@ -20,3 +46,26 @@
     </form>
   </div>
 </header>
+
+<script>
+  // Simple dropdown for accessibility & usability (works without JS, but this improves UX)
+  document.addEventListener('DOMContentLoaded', function() {
+    var loginLink = document.getElementById('show-login-dropdown');
+    var dropdown = document.getElementById('login-dropdown');
+    if (loginLink && dropdown) {
+      loginLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        dropdown.classList.toggle('active');
+        if (dropdown.classList.contains('active')) {
+          dropdown.querySelector('input[type="email"]').focus();
+        }
+      });
+      // Hide dropdown when clicking outside
+      document.addEventListener('click', function(e) {
+        if (!dropdown.contains(e.target) && e.target !== loginLink) {
+          dropdown.classList.remove('active');
+        }
+      });
+    }
+  });
+</script>
