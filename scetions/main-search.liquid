@@ -1,0 +1,22 @@
+<main class="main-content">
+  <header class="page-header">
+    <h1>Search Results</h1>
+    <p>Results for "{{ search.terms }}"</p>
+  </header>
+  <div class="products-grid">
+    {% if search.results_count > 0 %}
+      {% for item in search.results %}
+        {% if item.object_type == 'product' %}
+          {% render 'product-card', product: item %}
+        {% endif %}
+      {% endfor %}
+    {% else %}
+      <div class="empty-state">
+        <div class="empty-state-icon">🔍</div>
+        <h3>No products found.</h3>
+        <p>Try a different search term.</p>
+      </div>
+    {% endif %}
+  </div>
+  <a href="/account">Back to Account</a>
+</main>
