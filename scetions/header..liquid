@@ -1,0 +1,22 @@
+<header class="navbar">
+  <div class="nav-container">
+    <a href="{{ routes.root_url }}" class="logo">LLG Marketplace</a>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="{{ routes.root_url }}">Home</a></li>
+        <li><a href="/collections/all">Shop</a></li>
+        <li><a href="/wishlist">Wishlist</a></li>
+        <li><a href="/cart">Cart</a></li>
+        {% if customer %}
+          <li><a href="/account">Account</a></li>
+        {% else %}
+          <li><a href="/account/login">Sign In</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    <form action="/search" method="get" class="header-search">
+      <input type="search" name="q" placeholder="Search products..." aria-label="Search products">
+      <button type="submit">🔍</button>
+    </form>
+  </div>
+</header>
