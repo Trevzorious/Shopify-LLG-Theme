@@ -1,6 +1,10 @@
 <header class="navbar">
-  <div class="nav-container">
-    <a href="{{ routes.root_url }}" class="logo">LLG Marketplace</a>
+  <div class="nav-container custom-header">
+    <a href="https://liquidlightgames.com" class="main-logo-link" target="_blank" rel="noopener">
+      <img src="{{ 'Placeholder Logo image.png' | asset_url }}" alt="Liquid Light Games Logo" class="main-logo-img" />
+      <span class="main-logo-text">Liquid Light Games Main</span>
+    </a>
+    <a href="{{ routes.root_url }}" class="marketplace-link">LLG Marketplace</a>
     <nav>
       <ul class="nav-links">
         <li><a href="{{ routes.root_url }}">Home</a></li>
