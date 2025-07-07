@@ -38,19 +38,21 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, button, input, select, tex
   height: auto;
   display: block;
   object-fit: contain;
+  /* Ensures aspect ratio is preserved and fits inside 50x150 box */
 }
 
 .main-logo-text {
   margin-top: 0.25em;
   color: #8B5CF6;
+  font-family: 'Orbitron', Arial, sans-serif;
   font-weight: 700;
   text-align: center;
   max-width: 65px;
   width: 100%;
-  word-break: normal;
-  white-space: normal;
-  overflow-wrap: break-word;
-  font-size: clamp(0.60rem, 2.7vw, 0.92rem);
+  word-break: normal;          /* Don't break words */
+  white-space: normal;         /* Allow wrapping */
+  overflow-wrap: break-word;   /* Only break at word boundaries */
+  font-size: clamp(0.60rem, 2.7vw, 0.92rem); /* Responsive font size */
   line-height: 1.18;
 }
 
@@ -58,6 +60,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, button, input, select, tex
   align-self: center;
   margin-left: 1.1em;
   color: #E2E8F0;
+  font-family: 'Orbitron', Arial, sans-serif;
   font-size: 1.15em;
   text-decoration: none;
   font-weight: 700;
@@ -69,6 +72,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, button, input, select, tex
   background: #8B5CF6;
   color: #fff;
 }
+
 /* Responsive: stack logo/text if needed on small screens */
 @media (max-width: 600px) {
   .custom-header {
@@ -91,6 +95,7 @@ html, body, h1, h2, h3, h4, h5, h6, p, a, li, ul, ol, button, input, select, tex
 }
 html, body {
   min-height: 100%;
+  font-family: 'Inter', Arial, sans-serif;
   background: #0F0F23;
   color: #E2E8F0;
   font-size: 16px;
@@ -117,6 +122,7 @@ html, body {
   padding: 0 2rem;
 }
 .logo {
+  font-family: 'Orbitron', monospace;
   font-size: 1.7rem;
   font-weight: 900;
   color: #8B5CF6;
@@ -263,6 +269,7 @@ html, body {
   background: #8B5CF6;
   color: #fff;
 }
+/* Responsive (adjust dropdown for small screens) */
 @media (max-width: 600px) {
   .login-dropdown, .account-dropdown {
     right: 50%;
@@ -283,6 +290,7 @@ html, body {
   margin-bottom: 2.5rem;
 }
 .page-header h1 {
+  font-family: 'Orbitron', monospace;
   font-size: clamp(2.2rem, 5vw, 2.7rem);
   background: linear-gradient(90deg, #8B5CF6, #06B6D4, #EC4899);
   -webkit-background-clip: text;
@@ -367,6 +375,7 @@ html, body {
 }
 .product-title {
   margin: 0.2rem 0 0.5rem 0;
+  font-family: 'Orbitron', monospace;
   font-size: 1.10rem;
   font-weight: 700;
 }
@@ -442,6 +451,7 @@ html, body {
   opacity: 0.5;
 }
 .empty-state h3 {
+  font-family: 'Orbitron', monospace;
   font-size: 1.4rem;
   margin-bottom: 1rem;
   color: #E2E8F0;
