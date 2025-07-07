@@ -14,33 +14,40 @@
   padding-top: 1.2em;
   padding-left: 1.5em;
 }
+
 .main-logo-link {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
+  max-width: 65px;
   text-decoration: none;
-  max-width: 150px;
 }
+
 .main-logo-img {
-  width: auto;
+  width: 100%;
+  max-width: 50px;
+  max-height: 150px;
   height: auto;
-  max-width: 150px;
-  max-height: 50px;
   display: block;
+  object-fit: contain;
+  /* Ensures aspect ratio is preserved and fits inside 50x150 box */
 }
+
 .main-logo-text {
-  margin-top: 0.2em;
+  margin-top: 0.25em;
   color: #8B5CF6;
-  font-size: 0.98em;
   font-family: 'Orbitron', Arial, sans-serif;
   font-weight: 700;
-  text-align: left;
-  word-break: normal;
-  white-space: normal;
-  max-width: 150px;
+  text-align: center;
+  max-width: 65px;
   width: 100%;
-  line-height: 1.2;
+  word-break: normal;          /* Don't break words */
+  white-space: normal;         /* Allow wrapping */
+  overflow-wrap: break-word;   /* Only break at word boundaries */
+  font-size: clamp(0.60rem, 2.7vw, 0.92rem); /* Responsive font size */
+  line-height: 1.18;
 }
+
 .marketplace-link {
   align-self: center;
   margin-left: 1.1em;
@@ -57,6 +64,7 @@
   background: #8B5CF6;
   color: #fff;
 }
+
 /* Responsive: stack logo/text if needed on small screens */
 @media (max-width: 600px) {
   .custom-header {
