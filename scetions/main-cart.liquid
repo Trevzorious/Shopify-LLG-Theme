@@ -1,0 +1,48 @@
+<main class="main-content">
+  <h1>Your Cart</h1>
+  {% if cart.item_count == 0 %}
+    <p>Your cart is currently empty.</p>
+    <a href="{{ routes.collections_url }}" class="back-to-home">Continue Shopping</a>
+  {% else %}
+    <form action="/cart" method="post">
+      <table class="cart-table">
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Price</th>
+            <th>Remove</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for item in cart.items %}
+          <tr>
+            <td>
+              <a href="{{ item.url }}">
+                {% if item.image %}
+                  <img src="{{ item.image | img_url: '80x80' }}" alt="{{ item.title }}" style="width:40px;">
+                {% endif %}
+                {{ item.title }}
+              </a>
+            </td>
+            <td>
+              <input type="number" name="updates[]" value="{{ item.quantity }}" min="0">
+            </td>
+            <td>{{ item.line_price | money }}</td>
+            <td>
+              <input type="checkbox" name="updates[]" value="0">
+            </td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+      <div class="cart-summary">
+        <strong>Total: {{ cart.total_price | money }}</strong>
+      </div>
+      <button type="submit" name="update" class="add-to-cart-btn">Update Cart</button>
+      <button type="submit" name="checkout" class="add-to-cart-btn">Checkout</button>
+    </form>
+  {% endif %}
+  <a href="/account">Back to Account</a>
+  <a href="/wishlist">Back to Wishlist</a>
+</main>
